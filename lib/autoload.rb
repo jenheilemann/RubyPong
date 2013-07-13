@@ -8,20 +8,35 @@
 # error is thrown.
 
 class Autoload
-  def initialize
-    @root_path = File.join(File.dirname(__FILE__), '..')
+
+  # @param string the base location that we're doing all our file searching from.
+  # If you initialize in root of the project, you can run it like this:
+  #
+  # autoload = Autoload.new(__FILE__)
+  # autoload.require_all('app')       # Gets all the files and subfolders
+  # autoload.require_files('lib')     # Gets just the files, without subfolders
+  #
+  # If you initialize in a subfolder, you should add "/../" to the end of the
+  # string to get the base folder, as in:
+  #
+  # autoload = Autoload.new(File.join(__FILE__,'..'))
+  def initialize(relative_to)
+    @root_path = File.dirname(File.absolute_path(relative_to))
   end
 
-  def require_all_files(folder)
-    Dir[File.join(@root_path,folder,'*.rb')].each do |file|
-      # puts file
-      require file
-    end
+  def require_files(folder)
+    files = (Dir[File.join(@root_path,folder,'*.rb')]).map do |f|
+      return f if File.file?(f)
+    end.compact
+    require_and_catch_errors(files)
   end
 
-  def require_all(folder, failed = [])
-    files = (failed.empty?) ? get_all_files(folder) : failed
-    count_before = failed.count
+  def require_all(folder)
+    files = get_all_files(folder)
+    require_and_catch_errors(files)
+  end
+
+  def require_and_catch_errors(files)
     failed = []
     first_file_error = nil
 
@@ -36,15 +51,15 @@ class Autoload
 
     # if the number of erroring files doesn't change from one run to the next, and
     #   there's at least one erroring file
+    true if first_file_error.nil?
+
     if failed.size == files.size
       # raise the exception from the first file, because we're in a loop
       raise first_file_error
     elsif !failed.empty?
       # if some failed but a different number than last time
-      require_all(folder, failed)
+      require_and_catch_errors(failed)
     end
-
-    true
   end
 
   def get_all_files(folder)
@@ -54,15 +69,12 @@ class Autoload
       if File.directory?(f)
         # puts "Folder: #{f}"
         list.concat(get_all_files(File.join(folder,base)))
-      else
-        # puts "File:   #{f}"
+      elsif File.file?(f) && File.extname(f) == '.rb'
+        # testing for the file extension is a bit of a hack, but whatevs
+        # puts "File: #{f}"
         list << f
       end
     end
     list
   end
 end
-
-autoload = Autoload.new
-autoload.require_all('lib')
-autoload.require_all('app')
