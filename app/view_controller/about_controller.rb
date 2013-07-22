@@ -13,9 +13,9 @@ class AboutController < ViewController
     y = @line.bottom + 60
 
     texts = []
-    texts << "A pong clone, created by Jen Heilemann."
-    texts << "Built with love with the Making Games"
-    texts << "with Ruby Tutorial, by Man With Code:"
+    texts << "A pong clone, created by Jen Heilemann. Built with"
+    texts << "love with the Making Games with Ruby Tutorial, by"
+    texts << "Man With Code:"
 
     texts.collect! do |text|
       new_text = Text.new(40,y,text,40)

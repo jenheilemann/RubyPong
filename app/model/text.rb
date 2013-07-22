@@ -3,7 +3,7 @@ class Text < GameObject
 
   def initialize(x=0, y=0, text="Hello, World", size=48, alpha=255)
     font_location = File.join(
-      File.dirname(__FILE__),'..','assets','fonts','museo-slab.ttf')
+      File.dirname(__FILE__),'..','assets','fonts','Overlock-Regular.ttf')
     @font = Rubygame::TTF.new(font_location, size)
     @text = text
     @color = [255,255,255]
@@ -27,12 +27,12 @@ class Text < GameObject
   def bold(on = true)
     if on
       font_location = File.join(
-        File.dirname(__FILE__),'..','assets','fonts','museo-slab-bold.ttf')
+        File.dirname(__FILE__),'..','assets','fonts','Overlock-Bold.ttf')
       @font = Rubygame::TTF.new(font_location, @size)
       rerender_text
     else
       font_location = File.join(
-        File.dirname(__FILE__),'..','assets','fonts','museo-slab.ttf')
+        File.dirname(__FILE__),'..','assets','fonts','Overlock-Regular.ttf')
       @font = Rubygame::TTF.new(font_location, @size)
       rerender_text
     end
