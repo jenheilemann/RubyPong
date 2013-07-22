@@ -1,7 +1,7 @@
 class Ball < GameObject
   include Collisions
 
-  SPEED = Game::CONFIGS[:ball_speed] * 50
+  SPEED = Game::CONFIGS[:game_speed] * 75
 
   def initialize
     # get the image of the ball; Surface sets height/width based on the image

@@ -1,7 +1,7 @@
 class Paddle < GameObject
   attr_accessor :enemy, :name, :score
 
-  SPEED = Game::CONFIGS[:paddle_speed] * 50
+  SPEED = Game::CONFIGS[:game_speed] * 85
 
   def initialize( pos=[0,0], up_key=false, down_key=false, screen, name)
     x,y = pos

@@ -12,15 +12,12 @@ class OptionsController < ViewController
 
     # menu items
     @selector = Selector.new(
-             Button.new(40, Game::SCREEN.bottom-40, "Back", 36),
-
-      last = Switch.new(40, @line.bottom+60,36, "Music", :music),
-      last = Switch.new(40, last.bottom+15, 36, "Sound Effects", :sound_fx),
-      last = List.new(  40, last.bottom+15, 36, "Winning Score", :winning_score, [-1,1,3,5,7]),
-      last = List.new(  40, last.bottom+15, 36, "Ball Speed",    :ball_speed,    Array(3..10)),
-      last = List.new(  40, last.bottom+15, 36, "Paddle Speed",  :paddle_speed,  Array(3..10)),
-             Button.new(40, last.bottom+30, "Reset Options", 36)
-
+           Button.new(40,@screen.bottom-40,  "Back", 36),
+      last=Switch.new(40,@line.bottom+60,30, "Music", :music),
+      last=Switch.new(40,last.bottom+12, 30, "Sound Effects", :sound_fx),
+      last=List.new(  40,last.bottom+12, 30, "Winning Score", :winning_score, [-1,1,3,5,7]),
+      last=List.new(  40,last.bottom+12, 30, "Game Speed",  :game_speed,  Array(1..10)),
+           Button.new(40,last.bottom+36,     "Reset Options", 30)
     )
 
     @objects = [@title,@line,@selector]

@@ -22,10 +22,9 @@ class Configs
   def reset
     @settings = {
       winning_score: 3,
-      ball_speed:    6,
-      paddle_speed:  9,
+      game_speed:    5,
       music:         true,
-      sound_fx:      true
+      sound_fx:      true,
     }
     save
   end

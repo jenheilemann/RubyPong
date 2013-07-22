@@ -1,6 +1,5 @@
 ---
 :winning_score: 3
-:ball_speed: 7
-:paddle_speed: 8
+:game_speed: 6
 :music: false
 :sound_fx: true
