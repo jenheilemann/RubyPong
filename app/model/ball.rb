@@ -1,8 +1,6 @@
 class Ball < GameObject
   include Collisions
 
-  SPEED = Game::CONFIGS[:game_speed] * 75
-
   def initialize
     # get the image of the ball; Surface sets height/width based on the image
     surface = Rubygame::Surface.autoload "ball.png"
@@ -15,8 +13,9 @@ class Ball < GameObject
     y = Game::SCREEN.height/2 - surface.height/2
 
     # set up velocities, random directions
-    @vx = SPEED * ([-1, 1].sample)
-    @vy = SPEED * ([-1, 1].sample)
+    @speed = Game::CONFIGS[:game_speed] * 55
+    @vx = @speed * ([-1, 1].sample)
+    @vy = @speed * ([-1, 1].sample)
 
     # set up spin
     @spin = 1

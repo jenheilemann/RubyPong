@@ -1,8 +1,6 @@
 class Paddle < GameObject
   attr_accessor :enemy, :name, :score
 
-  SPEED = Game::CONFIGS[:game_speed] * 85
-
   def initialize( pos=[0,0], up_key=false, down_key=false, screen, name)
     x,y = pos
 
@@ -12,6 +10,8 @@ class Paddle < GameObject
     @moving_down = false
     @up_key = up_key
     @down_key = down_key
+
+    @speed = Game::CONFIGS[:game_speed] * 65
 
     @top_limit = screen.top
     @bottom_limit = screen.bottom
@@ -67,10 +67,10 @@ class Paddle < GameObject
 
   def update(tick_event)
     if @moving_up && @y > @top_limit
-      @y -= SPEED * tick_event.seconds
+      @y -= @speed * tick_event.seconds
     end
     if @moving_down && @y+@height < @bottom_limit
-      @y += SPEED * tick_event.seconds
+      @y += @speed * tick_event.seconds
     end
   end
 
