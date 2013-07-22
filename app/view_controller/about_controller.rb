@@ -30,7 +30,8 @@ class AboutController < ViewController
 
     # menu items
     @selector = Selector.new(
-      Button.new(40, Game::SCREEN.bottom-40, "Back", 24),
+      last = Button.new(40, Game::SCREEN.bottom-40, "Back", 24),
+             Button.new(last.right+30, Game::SCREEN.bottom-40, "License", 24)
     )
 
     @objects = [@title,@line,*texts,@site,@selector]

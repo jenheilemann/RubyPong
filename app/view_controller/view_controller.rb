@@ -112,6 +112,10 @@ class ViewController
     when action.include?("about")
       @game.switch_state( AboutController.new(@game, self) )
 
+    # License page
+    when action.include?("license")
+      @game.switch_state( LicenseController.new(@game, self) )
+
     # Resetting the options
     when action.include?("reset")
       Game::CONFIGS.reset
