@@ -56,7 +56,7 @@ If you feel moved to contribute, report a bug, or have a pull request, please
 do so. I used this project as a learning process, and am certain there are
 many improvements and suggestions that can be made.
 
-I primarily built this project during down time at my job with The Nerdery.
+I primarily built this project during down time at my job with [The Nerdery](http://nerdery.com).
 I am immensely thankful for a job that offers the opportunity to learn new
 skills and expand my knowledge. So, big shout out to the Nerds!
 
