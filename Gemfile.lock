@@ -1,13 +1,17 @@
+GIT
+  remote: https://github.com/xrs1133/ruby-sdl-ffi.git
+  revision: 0b721ac4659b4c08cda5aa2f418561a8a311e85b
+  specs:
+    ruby-sdl-ffi (0.4)
+      nice-ffi (>= 0.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
-    diff-lcs (1.2.4)
     ffi (1.9.0)
     nice-ffi (0.4)
       ffi (>= 0.5.0)
     rake (10.1.0)
-    ruby-sdl-ffi (0.4)
-      nice-ffi (>= 0.2)
     rubygame (2.6.4)
       rake (>= 0.7.0)
       ruby-sdl-ffi (>= 0.1.0)
@@ -16,4 +20,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ruby-sdl-ffi (= 0.4)!
   rubygame (= 2.6.4)
